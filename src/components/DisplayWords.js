@@ -21,18 +21,22 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: 0,
   },
 }));
-const DisplayWords = ({ wordList }) => {
+const DisplayWords = ({ wordList, defList }) => {
   const classes = useStyles();
 
   //console.log('DisplayWords ', wordList);
-  // console.log(quoteList);
+  if (defList[0]) console.log(defList[0].data);
   if (!wordList) {
     return <div> no words, yet </div>;
   }
+
   return (
     <div className='tableContainer' style={{ overflowX: 'auto' }}>
       {wordList.map((word, index) => (
         <div key={`${index}`}>{word}</div>
+      ))}
+      {defList.map((def, index) => (
+        <div key={`${index}`}>{def.data[0].shortdef[0]}</div>
       ))}
     </div>
   );

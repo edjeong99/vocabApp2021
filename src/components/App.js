@@ -25,18 +25,19 @@ function App() {
       .then((response) => response.json())
       .then((jsonResponse) => {
         if (jsonResponse) {
-          //  console.log(jsonResponse);
+          console.log(jsonResponse);
 
           setSearchResultList(jsonResponse);
-          setWordList((wordList) => [...wordList, searchWord]);
+
           let newWord = {
             word: `${searchWord}`,
-            data: `${jsonResponse}`,
+            data: { ...jsonResponse },
           };
           //console.log(newWord.data);
           defList = [...defList, newWord];
-          // console.log('defList = ');
-          // console.log(defList);
+          console.log('defList = ');
+          console.log(defList);
+          setWordList((wordList) => [...wordList, searchWord]);
         } else {
           console.log('Search error');
         }
