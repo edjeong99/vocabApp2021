@@ -21,36 +21,19 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: 0,
   },
 }));
-const DisplayWords = ({ quoteList, deleteStock, newStock }) => {
+const DisplayWords = ({ wordList }) => {
   const classes = useStyles();
 
-  // console.log('DisplayStocks ');
+  //console.log('DisplayWords ', wordList);
   // console.log(quoteList);
-
+  if (!wordList) {
+    return <div> no words, yet </div>;
+  }
   return (
     <div className='tableContainer' style={{ overflowX: 'auto' }}>
-      <Table size='small' className='displayStocks'>
-        <TableHead>
-          <TableRow>
-            <TableCell className={classes.spaceHolder}></TableCell>
-            <TableCell className={classes.align2}>Symbol</TableCell>
-            <TableCell className={classes.align2}>Current Price</TableCell>
-            <TableCell className={classes.align2}>% Change</TableCell>
-            <TableCell className={classes.align2}>Prev. Closing</TableCell>
-            <TableCell></TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {quoteList.map((quote, index) => (
-            <DisplayAStock
-              key={`${quote.symbol}+${index}`}
-              quote={quote}
-              deleteStock={deleteStock}
-              newStock={newStock}
-            />
-          ))}
-        </TableBody>
-      </Table>
+      {wordList.map((word, index) => (
+        <div key={`${index}`}>{word}</div>
+      ))}
     </div>
   );
 };
