@@ -16,7 +16,7 @@ const Search = ({ search }) => {
   };
 
   return (
-    <Form inline>
+    <Form>
       <FormControl
         type='text'
         placeholder='Search'
@@ -24,7 +24,7 @@ const Search = ({ search }) => {
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
       />
-      <Button variant='outline-light' onClick={callSearchFunction}>
+      <Button variant='outline-primary' onClick={callSearchFunction}>
         Search
       </Button>
     </Form>

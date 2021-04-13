@@ -49,9 +49,8 @@ function App() {
     <Container>
       <Header />
       <Search search={search} />
-      <div className='searchField'>
-        <DisplayWords wordList={wordList} defList={defList} />
-      </div>
+
+      <DisplayWords wordList={wordList} defList={defList} />
     </Container>
   );
 }
