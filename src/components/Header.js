@@ -1,10 +1,10 @@
 import React from 'react';
-
-const Header = ({ text }) => {
+import { Navbar } from 'react-bootstrap';
+const Header = () => {
   return (
-    <div>
-      <h4>{text}</h4>
-    </div>
+    <Navbar bg='primary' variant='dark' expand='md'>
+      <Navbar.Brand href='#home'>Vocabulary-App</Navbar.Brand>
+    </Navbar>
   );
 };
 

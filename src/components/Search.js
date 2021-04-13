@@ -1,23 +1,5 @@
 import React, { useState } from 'react';
-
-// const useStyles = makeStyles((theme) => ({
-//   search: {
-//     flexGrow: 3,
-//     display: 'flex',
-//     flexDirection: 'row',
-//     flexWrap: 'wrap',
-//     justifyContent: 'center',
-//     alignContent: 'center',
-//   },
-//   searchInputFile: {
-//     paddingRight: 24, // keep right padding when drawer closed
-
-//     maxHeight: '30px',
-//   },
-//   searchIcon: {
-//     marginLeft: '10px',
-//   },
-// }));
+import { Form, FormControl, Button } from 'react-bootstrap';
 
 const Search = ({ search }) => {
   const [searchValue, setSearchValue] = useState('');
@@ -27,11 +9,26 @@ const Search = ({ search }) => {
   };
 
   const callSearchFunction = (e) => {
+    console.log('query = ', searchValue);
     e.preventDefault();
     search(searchValue);
     setSearchValue('');
   };
 
+  return (
+    <Form inline>
+      <FormControl
+        type='text'
+        placeholder='Search'
+        className='mr-sm-2'
+        value={searchValue}
+        onChange={(e) => setSearchValue(e.target.value)}
+      />
+      <Button variant='outline-light' onClick={callSearchFunction}>
+        Search
+      </Button>
+    </Form>
+  );
   return (
     <form
     // className={classes.search}

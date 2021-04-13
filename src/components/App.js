@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import Container from 'react-bootstrap/Container';
 import Header from './Header';
 import DisplayWords from './DisplayWords';
 import Search from './Search';
@@ -46,13 +46,13 @@ function App() {
   };
 
   return (
-    <div className='App'>
-      <Header text='Vocabulary' />
+    <Container>
+      <Header />
+      <Search search={search} />
       <div className='searchField'>
-        <Search search={search} />
         <DisplayWords wordList={wordList} defList={defList} />
       </div>
-    </div>
+    </Container>
   );
 }
 
