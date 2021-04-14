@@ -1,15 +1,17 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 
-const DisplayCarouselCard = ({ word, data }) => {
+const DisplayCarouselCard = ({ word }) => {
+  console.log(word);
+  if (!word) return null;
   return (
     <Card>
       <Card.Body>
-        <Card.Title>{word}</Card.Title>
+        <Card.Title>{word.word}</Card.Title>
         <Card.Text>
-          {Object.keys(data).map((i) => (
+          {Object.keys(word.data).map((i) => (
             <p>
-              <em>{data[i].fl}</em>, {data[i].shortdef}
+              <em>{word.data[i].fl}</em>, {word.data[i].shortdef}
             </p>
           ))}
         </Card.Text>
