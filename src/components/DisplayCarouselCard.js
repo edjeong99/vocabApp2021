@@ -3,16 +3,15 @@ import Card from 'react-bootstrap/Card';
 
 const DisplayCarouselCard = ({ word, data }) => {
   return (
-    <Card style={{ width: '100%' }}>
+    <Card>
       <Card.Body>
         <Card.Title>{word}</Card.Title>
         <Card.Text>
-          {data &&
-            data.map((def, index) => (
-              <p>
-                {index} :{def.fl}
-              </p>
-            ))}
+          {Object.keys(data).map((i) => (
+            <p>
+              <em>{data[i].fl}</em>, {data[i].shortdef}
+            </p>
+          ))}
         </Card.Text>
       </Card.Body>
     </Card>
