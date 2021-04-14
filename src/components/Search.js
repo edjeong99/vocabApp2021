@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, FormControl, Button, Spinner } from 'react-bootstrap';
+import { Form, FormControl, Button, Spinner, Row, Col } from 'react-bootstrap';
 import * as Constants from '../util/Constants';
 
 const Search = ({ addWord }) => {
@@ -41,26 +41,31 @@ const Search = ({ addWord }) => {
   };
 
   return (
-    <Form>
-      <FormControl
-        type='text'
-        placeholder='Search'
-        className='mr-sm-2'
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
-      <Button variant='outline-primary' onClick={callSearchFunction}>
-        {loading && (
-          <Spinner
-            as='span'
-            animation='border'
-            size='sm'
-            role='status'
-            aria-hidden='true'
+    <Form className='mt-3 mb-3'>
+      <Row>
+        <Col xs={8}>
+          <FormControl
+            type='text'
+            placeholder='Search'
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
           />
-        )}
-        Search
-      </Button>
+        </Col>
+        <Col xs={4} className='d-flex justify-content-center'>
+          <Button variant='outline-primary' onClick={callSearchFunction}>
+            {loading && (
+              <Spinner
+                as='span'
+                animation='border'
+                size='sm'
+                role='status'
+                aria-hidden='true'
+              />
+            )}
+            Search
+          </Button>
+        </Col>
+      </Row>
     </Form>
   );
 };
