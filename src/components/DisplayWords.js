@@ -1,21 +1,17 @@
 import React from 'react';
-import { ListGroup } from 'react-bootstrap';
-
+import { Tabs, Tab } from 'react-bootstrap';
+import DisplayWordsList from './DisplayWordsList';
+import DisplayWordsCarousel from './DisplayWordsCarousel';
 const DisplayWords = ({ wordList }) => {
-  //console.log('DisplayWords ', wordList);
-
-  if (!wordList || wordList.length < 1) {
-    return <div> no words, yet </div>;
-  }
-
   return (
-    <ListGroup>
-      {wordList.map((word, index) => (
-        <ListGroup.Item key={`${index}`}>
-          <h5 className='inline'>{word.word}</h5> : {word.data[0].shortdef[0]}
-        </ListGroup.Item>
-      ))}
-    </ListGroup>
+    <Tabs defaultActiveKey='profile' id='uncontrolled-tab-example'>
+      <Tab eventKey='List' title='List'>
+        <DisplayWordsList wordList={wordList} />
+      </Tab>
+      <Tab eventKey='Carousel' title='Carousel'>
+        <DisplayWordsCarousel wordList={wordList} />
+      </Tab>
+    </Tabs>
   );
 };
 
