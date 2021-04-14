@@ -14,14 +14,16 @@ function App() {
   //list of vocabulary
   const [wordList, setWordList] = useState([]);
 
+  // below useEffect init data.  checks local storage and use the data
   useEffect(() => {
+    console.log('Init useEffect!!!');
     let storedContent = JSON.parse(localStorage.getItem('wordList'));
     if (storedContent) {
-      console.log('App useEffect put stored content into Wordlist');
       setWordList(storedContent);
     }
   }, []);
 
+  // add new word
   const addWord = (newWord) => {
     console.log('defList = ');
     console.log(defList);
@@ -30,7 +32,7 @@ function App() {
   };
 
   return (
-    <Container>
+    <Container fluid>
       <Header />
       <Search addWord={addWord} />
       <DisplayWords wordList={wordList} />
