@@ -7,50 +7,33 @@ import Search from './Search';
 import '../css/App.css';
 import * as Constants from '../util/Constants';
 
+// list of vocabulary and definitions
 let defList = [];
 
 function App() {
+  //list of vocabulary
   const [wordList, setWordList] = useState([]);
-  // searchResultList is result of a user search.  It has list of stock symbols that match search
-  const [searchResultList, setSearchResultList] = useState([]);
 
-  const search = (searchWord) => {
-    console.log(
-      'Search being w/ ' +
-        Constants.WEBSTER_API_URL +
-        searchWord +
-        Constants.WEBSTER_TOKEN
-    );
-    fetch(Constants.WEBSTER_API_URL + searchWord + Constants.WEBSTER_TOKEN)
-      .then((response) => response.json())
-      .then((jsonResponse) => {
-        if (jsonResponse) {
-          console.log(jsonResponse);
+  useEffect(() => {
+    let storedContent = JSON.parse(localStorage.getItem('wordList'));
+    if (storedContent) {
+      console.log('App useEffect put stored content into Wordlist');
+      setWordList(storedContent);
+    }
+  }, []);
 
-          setSearchResultList(jsonResponse);
-
-          let newWord = {
-            word: `${searchWord}`,
-            data: { ...jsonResponse },
-          };
-          //console.log(newWord.data);
-          defList = [...defList, newWord];
-          console.log('defList = ');
-          console.log(defList);
-          setWordList((wordList) => [...wordList, searchWord]);
-        } else {
-          console.log('Search error');
-        }
-      })
-      .catch((e) => console.log('Search error ', e));
+  const addWord = (newWord) => {
+    console.log('defList = ');
+    console.log(defList);
+    localStorage.setItem('wordList', JSON.stringify([...wordList, newWord]));
+    setWordList((wordList) => [...wordList, newWord]);
   };
 
   return (
     <Container>
       <Header />
-      <Search search={search} />
-
-      <DisplayWords wordList={wordList} defList={defList} />
+      <Search addWord={addWord} />
+      <DisplayWords wordList={wordList} />
     </Container>
   );
 }

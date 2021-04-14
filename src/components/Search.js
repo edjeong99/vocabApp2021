@@ -1,18 +1,38 @@
 import React, { useState } from 'react';
 import { Form, FormControl, Button } from 'react-bootstrap';
+import * as Constants from '../util/Constants';
 
-const Search = ({ search }) => {
-  const [searchValue, setSearchValue] = useState('');
+const Search = ({ addWord }) => {
+  const [query, setQuery] = useState('');
+  // searchResultList is result of a user search.  It has list of stock symbols that match search
+  const [searchResultList, setSearchResultList] = useState([]);
 
   const handleSearchInputChange = (e) => {
-    setSearchValue(e.target.value);
+    setQuery(e.target.value);
   };
 
   const callSearchFunction = (e) => {
-    console.log('query = ', searchValue);
+    console.log('query = ', query);
     e.preventDefault();
-    search(searchValue);
-    setSearchValue('');
+
+    fetch(Constants.WEBSTER_API_URL + query + Constants.WEBSTER_TOKEN)
+      .then((response) => response.json())
+      .then((jsonResponse) => {
+        if (jsonResponse) {
+          console.log(jsonResponse);
+          let newWord = {
+            word: `${query}`,
+            data: { ...jsonResponse },
+          };
+          //console.log(newWord.data);
+          addWord(newWord);
+        } else {
+          console.log('Search error');
+        }
+      })
+      .catch((e) => console.log('Search error at catch ', e));
+
+    setQuery('');
   };
 
   return (
@@ -21,32 +41,13 @@ const Search = ({ search }) => {
         type='text'
         placeholder='Search'
         className='mr-sm-2'
-        value={searchValue}
-        onChange={(e) => setSearchValue(e.target.value)}
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
       />
       <Button variant='outline-primary' onClick={callSearchFunction}>
         Search
       </Button>
     </Form>
-  );
-  return (
-    <form
-    // className={classes.search}
-    >
-      <input
-        // className={classes.searchInputFile}
-        value={searchValue}
-        onChange={handleSearchInputChange}
-        type='text'
-      />
-      <div
-        onClick={callSearchFunction}
-        type='submit'
-        // className={classes.searchIcon}
-      >
-        {/* <SearchIcon /> */}search
-      </div>
-    </form>
   );
 };
 
