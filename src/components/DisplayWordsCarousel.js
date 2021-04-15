@@ -29,7 +29,8 @@ const DisplayWordsCarousel = ({ wordObjList, deleteWordObj }) => {
 
   const handleDelete = () => {
     deleteWordObj(wordObjList[index].spell);
-    changeIndex(1);
+    // if the deleting word is the last word, the index needs to be changed by -1
+    if (index === wordObjList.length - 1) changeIndex(-1);
   };
   return (
     <div className='carousel'>

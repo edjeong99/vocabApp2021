@@ -3,7 +3,7 @@ import { ListGroup } from 'react-bootstrap';
 import { TiDelete, TiDocumentAdd } from 'react-icons/ti';
 
 const DisplayWordsList = ({ wordObjList, deleteWordObj }) => {
-  console.log(wordObjList);
+  // console.log(wordObjList);
   const handleSave = () => {};
 
   if (!wordObjList || wordObjList.length < 1) {
