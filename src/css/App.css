@@ -71,7 +71,16 @@ overflow: auto;
   height : 100%;
   overflow: auto;
 }
+.card-body{
+  padding : 10px 5px!important;
+}
+.card-title{
+  display: inline;
+  width : 70%;
+}
 .cardHeader{
+display: flex;
+justify-content: space-between;
   height : 20%;
   overflow:auto;
 }
@@ -103,12 +112,14 @@ flex : 1 1 auto;
 }
 .wordListHeader{
   display : flex;
-  justify-content: space-between
+  justify-content: space-between;
+
 }
 
 .wordListHeaderTitle{
   display: inline;
-  
+  max-width : 70%;
+  overflow-wrap:break-word;
 }
 
 

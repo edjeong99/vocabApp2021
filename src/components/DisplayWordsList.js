@@ -30,7 +30,7 @@ const DisplayWordsList = ({
               <TiDocumentAdd size='1.5em' onClick={() => handleSave(index)} />
             </div>
           </div>
-          {wordObj.data[0].shortdef[0]}
+          {wordObj.data[0].shortdef && wordObj.data[0].shortdef[0]}
         </ListGroup.Item>
       ))}
     </ListGroup>

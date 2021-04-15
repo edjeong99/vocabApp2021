@@ -3,7 +3,11 @@ import Button from 'react-bootstrap/Button';
 import DisplayCarouselCard from './DisplayCarouselCard';
 
 // let index = 0;
-const DisplayWordsCarousel = ({ wordObjList, deleteWordObj }) => {
+const DisplayWordsCarousel = ({
+  wordObjList,
+  deleteWordObj,
+  saveToMemorizedList,
+}) => {
   const [index, setIndex] = useState(0);
 
   console.log('index = ' + index);
@@ -32,6 +36,10 @@ const DisplayWordsCarousel = ({ wordObjList, deleteWordObj }) => {
     // if the deleting word is the last word, the index needs to be changed by -1
     if (index === wordObjList.length - 1) changeIndex(-1);
   };
+
+  const handleSaveToMemorized = () => {
+    saveToMemorizedList(wordObjList[index]);
+  };
   return (
     <div className='carousel'>
       <Button
@@ -46,6 +54,7 @@ const DisplayWordsCarousel = ({ wordObjList, deleteWordObj }) => {
         <DisplayCarouselCard
           wordObj={wordObjList[index]}
           handleDelete={handleDelete}
+          handleSaveToMemorized={handleSaveToMemorized}
         />
       </div>
 
