@@ -47,9 +47,6 @@ justify-content: center;
   width:100%;
 }
 
-.inline{
-  display: inline;
-}
 
 .tab-content{
   height : 70vh;
@@ -101,9 +98,18 @@ overflow: auto;
 flex : 1 1 auto;
 }
 
+.list-group-item{
+  margin-bottom: 5px;;
+}
+.wordListHeader{
+  display : flex;
+  justify-content: space-between
+}
 
-
-
+.wordListHeaderTitle{
+  display: inline;
+  
+}
 
 
 

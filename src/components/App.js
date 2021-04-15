@@ -9,6 +9,7 @@ import '../css/App.css';
 function App() {
   //list of vocabulary
   const [wordObjList, setWordObjList] = useState([]);
+  const [memorizedWordObjList, setMemorizedWordObjList] = useState([]);
 
   // below useEffect init data.  checks local storage and use the data
   useEffect(() => {
@@ -16,6 +17,12 @@ function App() {
     let storedContent = JSON.parse(localStorage.getItem('wordObjList'));
     if (storedContent) {
       setWordObjList(storedContent);
+    }
+    let storedMemoContent = JSON.parse(
+      localStorage.getItem('memorizedWordObjList')
+    );
+    if (storedMemoContent) {
+      setMemorizedWordObjList(storedMemoContent);
     }
   }, []);
 
@@ -38,11 +45,30 @@ function App() {
     localStorage.setItem('wordObjList', JSON.stringify(newWordObjList));
   };
 
+  const saveToMemorizedList = (wordObj) => {
+    // save the new wordObj to the memorizedList
+    localStorage.setItem(
+      'memorizedWordObjList',
+      JSON.stringify([...memorizedWordObjList, wordObj])
+    );
+    setMemorizedWordObjList((memorizedWordObjList) => [
+      ...memorizedWordObjList,
+      wordObj,
+    ]);
+
+    // delete the word from wordList
+    deleteWordObj(wordObj.spell);
+  };
+
   return (
     <Container fluid>
       <Header />
       <Search addWordObj={addWordObj} />
-      <DisplayWords wordObjList={wordObjList} deleteWordObj={deleteWordObj} />
+      <DisplayWords
+        wordObjList={wordObjList}
+        deleteWordObj={deleteWordObj}
+        saveToMemorizedList={saveToMemorizedList}
+      />
     </Container>
   );
 }
