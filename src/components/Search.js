@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, FormControl, Button, Spinner, Row, Col } from 'react-bootstrap';
 import * as Constants from '../util/Constants';
 
-const Search = ({ addWord }) => {
+const Search = ({ addWordObj }) => {
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
   // searchResultList is result of a user search.  It has list of stock symbols that match search
@@ -21,12 +21,12 @@ const Search = ({ addWord }) => {
       .then((jsonResponse) => {
         if (jsonResponse) {
           console.log(jsonResponse);
-          let newWord = {
-            word: `${query}`,
+          let newWordObj = {
+            spell: `${query}`,
             data: { ...jsonResponse },
           };
           //console.log(newWord.data);
-          addWord(newWord);
+          addWordObj(newWordObj);
           setLoading(false);
         } else {
           console.log('Search error');

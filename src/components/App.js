@@ -8,30 +8,39 @@ import '../css/App.css';
 
 function App() {
   //list of vocabulary
-  const [wordList, setWordList] = useState([]);
+  const [wordObjList, setWordObjList] = useState([]);
 
   // below useEffect init data.  checks local storage and use the data
   useEffect(() => {
     console.log('Init useEffect!!!');
-    let storedContent = JSON.parse(localStorage.getItem('wordList'));
+    let storedContent = JSON.parse(localStorage.getItem('wordObjList'));
     if (storedContent) {
-      setWordList(storedContent);
+      setWordObjList(storedContent);
     }
   }, []);
 
   // add new word
-  const addWord = (newWord) => {
+  const addWordObj = (newWordObj) => {
     console.log('defList = ');
 
-    localStorage.setItem('wordList', JSON.stringify([...wordList, newWord]));
-    setWordList((wordList) => [...wordList, newWord]);
+    localStorage.setItem(
+      'wordObjList',
+      JSON.stringify([...wordObjList, newWordObj])
+    );
+    setWordObjList((wordObjList) => [...wordObjList, newWordObj]);
+  };
+
+  const deleteWord = (deletingWord) => {
+    let newWordList = wordObjList.filter(
+      (wordObj) => wordObj.spell !== deletingWord
+    );
   };
 
   return (
     <Container fluid>
       <Header />
-      <Search addWord={addWord} />
-      <DisplayWords wordList={wordList} />
+      <Search addWordObj={addWordObj} />
+      <DisplayWords wordObjList={wordObjList} />
     </Container>
   );
 }

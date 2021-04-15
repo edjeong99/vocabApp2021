@@ -2,8 +2,8 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import { TiDelete, TiDocumentAdd } from 'react-icons/ti';
 
-const DisplayCarouselCard = ({ word }) => {
-  console.log(word);
+const DisplayCarouselCard = ({ wordObj }) => {
+  console.log(wordObj);
 
   let handleDelete = () => {
     console.log('Delete');
@@ -12,19 +12,19 @@ const DisplayCarouselCard = ({ word }) => {
   let handleSave = () => {
     console.log('Save');
   };
-  if (!word) return null;
+  if (!wordObj) return null;
   return (
     <Card>
       <Card.Body>
         <div className='cardHeader'>
-          <Card.Title>{word.word}</Card.Title>
+          <Card.Title>{wordObj.spell}</Card.Title>
           <TiDelete size='1.5em' onClick={() => handleDelete()} />
           <TiDocumentAdd size='1.5em' onClick={() => handleSave()} />
         </div>
         <Card.Text>
-          {Object.keys(word.data).map((i) => (
+          {Object.keys(wordObj.data).map((i) => (
             <p>
-              <em>{word.data[i].fl}</em>, {word.data[i].shortdef}
+              <em>{wordObj.data[i].fl}</em>, {wordObj.data[i].shortdef}
             </p>
           ))}
         </Card.Text>
