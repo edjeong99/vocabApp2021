@@ -4,7 +4,7 @@ import DisplayWordsList from './DisplayWordsList';
 import DisplayWordsCarousel from './DisplayWordsCarousel';
 const DisplayWords = ({ wordList }) => {
   return (
-    <Tabs defaultActiveKey='profile' id='uncontrolled-tab-example'>
+    <Tabs defaultActiveKey='List' id='uncontrolled-tab-example'>
       <Tab eventKey='List' title='List'>
         <DisplayWordsList wordList={wordList} />
       </Tab>
