@@ -5,10 +5,10 @@ import DisplayWordsCarousel from './DisplayWordsCarousel';
 const DisplayWords = ({ wordList }) => {
   return (
     <Tabs defaultActiveKey='List' id='uncontrolled-tab-example'>
-      <Tab eventKey='List' title='List'>
+      <Tab className='wordDisplay' eventKey='List' title='List'>
         <DisplayWordsList wordList={wordList} />
       </Tab>
-      <Tab eventKey='Carousel' title='Carousel'>
+      <Tab className='wordDisplay' eventKey='Carousel' title='Carousel'>
         <DisplayWordsCarousel wordList={wordList} />
       </Tab>
     </Tabs>

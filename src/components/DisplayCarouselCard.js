@@ -16,10 +16,11 @@ const DisplayCarouselCard = ({ word }) => {
   return (
     <Card>
       <Card.Body>
-        <Card.Title>{word.word}</Card.Title>
-        <TiDelete size='1.5em' onClick={() => handleDelete()} />
-        <TiDocumentAdd size='1.5em' onClick={() => handleSave()} />
-
+        <div className='cardHeader'>
+          <Card.Title>{word.word}</Card.Title>
+          <TiDelete size='1.5em' onClick={() => handleDelete()} />
+          <TiDocumentAdd size='1.5em' onClick={() => handleSave()} />
+        </div>
         <Card.Text>
           {Object.keys(word.data).map((i) => (
             <p>

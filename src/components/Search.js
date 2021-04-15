@@ -41,7 +41,7 @@ const Search = ({ addWord }) => {
   };
 
   return (
-    <Form className='mt-3 mb-3'>
+    <Form className='mt-3 mb-3 search'>
       <Row>
         <Col xs={8}>
           <FormControl

@@ -27,14 +27,6 @@ justify-content: center;
   margin: 0;
 }
 
-.autoRefresh{
-  position : fixed;
-  right:0;
-  top :100px;
-font-size : 1rem;
-margin : 5px;
-z-index:100;
-}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -44,20 +36,7 @@ z-index:100;
   }
 }
 
-.spinner {
-  height: 80px;
-  margin: auto;
-}
 
-.loader{
-  height: 100vh;
-  width: 100%;
-  z-index : 200;
-  display : flex;
-  background : grey;
-  justify-content: center;
-  align-items: center;
-}
 .App-intro {
   font-size: large;
   display: flex;
@@ -68,25 +47,59 @@ z-index:100;
   width:100%;
 }
 
-
 .inline{
   display: inline;
 }
 
+.tab-content{
+  height : 70vh;
+  overflow: auto;
+}
+
+#uncontrolled-tab-example-tabpane-Carousel{
+  height : 100%;
+}
 .carousel{
   display: flex;
   flex-direction: row;
   align-items: center;
+  height : 100%;
+  overflow: auto;
 }
-
+.carouselCard{
+height : 95%;
+overflow: auto;
+}
+.card{
+  height : 100%;
+  overflow: auto;
+}
+.cardHeader{
+  height : 20%;
+  overflow:auto;
+}
+.card-text{
+  height : 75%;
+  overflow:auto;
+}
 .carouselBtn{
   margin:5px;
+  position : relative;
+  top : 20px;
 }
+.container-fluid{
+  display: flex;
 
+  flex-flow: column;
 
-
-
-
+  height: 100%;
+}
+.container-fluid, .nav, form{
+  flex : 0 1 auto
+}
+.tab-content{
+flex : 1 1 auto;
+}
 
 
 
