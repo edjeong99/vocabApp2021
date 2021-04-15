@@ -18,11 +18,9 @@ const DisplayCarouselCard = ({ wordObj, handleDelete }) => {
           <TiDocumentAdd size='1.5em' onClick={() => handleSave()} />
         </div>
         <Card.Text>
-          {Object.keys(wordObj.data).map((i) => (
-            <p>
-              <em>{wordObj.data[i].fl}</em>, {wordObj.data[i].shortdef}
-            </p>
-          ))}
+          {Object.keys(wordObj.data).map(
+            (i) => `<em>${wordObj.data[i].fl}</em>, ${wordObj.data[i].shortdef}`
+          )}
         </Card.Text>
       </Card.Body>
     </Card>
