@@ -30,17 +30,19 @@ function App() {
     setWordObjList((wordObjList) => [...wordObjList, newWordObj]);
   };
 
-  const deleteWord = (deletingWord) => {
-    let newWordList = wordObjList.filter(
+  const deleteWordObj = (deletingWord) => {
+    let newWordObjList = wordObjList.filter(
       (wordObj) => wordObj.spell !== deletingWord
     );
+    setWordObjList((wordObjList) => newWordObjList);
+    localStorage.setItem('wordObjList', JSON.stringify(newWordObjList));
   };
 
   return (
     <Container fluid>
       <Header />
       <Search addWordObj={addWordObj} />
-      <DisplayWords wordObjList={wordObjList} />
+      <DisplayWords wordObjList={wordObjList} deleteWordObj={deleteWordObj} />
     </Container>
   );
 }

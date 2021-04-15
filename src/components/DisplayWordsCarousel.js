@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import DisplayCarouselCard from './DisplayCarouselCard';
 
 // let index = 0;
-const DisplayWordsCarousel = ({ wordObjList }) => {
+const DisplayWordsCarousel = ({ wordObjList, deleteWordObj }) => {
   const [index, setIndex] = useState(0);
 
   console.log('index = ' + index);
@@ -27,6 +27,10 @@ const DisplayWordsCarousel = ({ wordObjList }) => {
     console.log('changeIndex  index = ', index);
   };
 
+  const handleDelete = () => {
+    deleteWordObj(wordObjList[index].spell);
+    changeIndex(1);
+  };
   return (
     <div className='carousel'>
       <Button
@@ -38,7 +42,10 @@ const DisplayWordsCarousel = ({ wordObjList }) => {
       </Button>
 
       <div className='carouselCard'>
-        <DisplayCarouselCard wordObj={wordObjList[index]} />
+        <DisplayCarouselCard
+          wordObj={wordObjList[index]}
+          handleDelete={handleDelete}
+        />
       </div>
 
       <Button

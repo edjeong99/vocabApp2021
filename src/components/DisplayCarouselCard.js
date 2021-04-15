@@ -2,12 +2,8 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import { TiDelete, TiDocumentAdd } from 'react-icons/ti';
 
-const DisplayCarouselCard = ({ wordObj }) => {
+const DisplayCarouselCard = ({ wordObj, handleDelete }) => {
   console.log(wordObj);
-
-  let handleDelete = () => {
-    console.log('Delete');
-  };
 
   let handleSave = () => {
     console.log('Save');
