@@ -2,25 +2,28 @@ import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import DisplayCarouselCard from './DisplayCarouselCard';
 
+// let index = 0;
 const DisplayWordsCarousel = ({ wordList }) => {
-  const [word, setWord] = useState();
-  let index = 0;
+  const [index, setIndex] = useState(0);
 
-  useEffect(() => {
-    setWord(wordList[index]);
-    console.log('index = ' + index);
-    console.log(wordList);
-  }, []);
+  console.log('index = ' + index);
+  console.log(wordList);
+  // useEffect(() => {
+  //   setWord(wordList[index]);
+  //   console.log('index = ' + index);
+  //   console.log(wordList);
+  // }, []);
 
   if (!wordList || wordList.length < 1) {
     return <div> no words, yet </div>;
   }
 
   const changeIndex = (num) => {
-    index += num;
-    if (index < 0) index = wordList.length - 1;
-    else if (index > wordList.length - 1) index = 0;
-    setWord(wordList[index]);
+    let newNum = index + num;
+    if (newNum < 0) newNum = wordList.length - 1;
+    else if (newNum > wordList.length - 1) newNum = 0;
+
+    setIndex(newNum);
     console.log('changeIndex  index = ', index);
   };
 
@@ -35,7 +38,7 @@ const DisplayWordsCarousel = ({ wordList }) => {
       </Button>
 
       <div className='carouselCard'>
-        <DisplayCarouselCard word={word} />
+        <DisplayCarouselCard word={wordList[index]} />
       </div>
 
       <Button
