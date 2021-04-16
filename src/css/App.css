@@ -81,7 +81,7 @@ overflow: auto;
 .cardHeader{
 display: flex;
 justify-content: space-between;
-  height : 20%;
+
   overflow:auto;
 }
 .card-text{

@@ -10,6 +10,7 @@ function App() {
   //list of vocabulary
   const [wordObjList, setWordObjList] = useState([]);
   const [memorizedWordObjList, setMemorizedWordObjList] = useState([]);
+  const [isDisplayStudy, setIsDisplayStudy] = useState(true);
 
   // below useEffect init data.  checks local storage and use the data
   useEffect(() => {
@@ -60,9 +61,13 @@ function App() {
     deleteWordObj(wordObj.spell);
   };
 
+  const changeWordList = () => {
+    setIsDisplayStudy((isDisplayStudy) => !isDisplayStudy);
+  };
+
   return (
     <Container fluid>
-      <Header />
+      <Header isDisplayStudy={isDisplayStudy} changeWordList={changeWordList} />
       <Search addWordObj={addWordObj} />
       <DisplayWords
         wordObjList={wordObjList}
