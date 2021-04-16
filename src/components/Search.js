@@ -41,7 +41,7 @@ const Search = ({ addWordObj }) => {
   };
 
   return (
-    <Form className='mt-3 mb-3 search'>
+    <Form className='mt-3 mb-3 search' onSubmit={callSearchFunction}>
       <Row>
         <Col xs={8}>
           <FormControl
