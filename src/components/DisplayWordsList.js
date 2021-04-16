@@ -7,7 +7,7 @@ const DisplayWordsList = ({
   deleteWordObj,
   saveToMemorizedList,
 }) => {
-  // console.log(wordObjList);
+  console.log(wordObjList);
   const handleSave = (i) => {
     saveToMemorizedList(wordObjList[i]);
   };

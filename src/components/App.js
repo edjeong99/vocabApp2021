@@ -11,6 +11,7 @@ function App() {
   const [wordObjList, setWordObjList] = useState([]);
   const [memorizedWordObjList, setMemorizedWordObjList] = useState([]);
   const [isDisplayStudy, setIsDisplayStudy] = useState(true);
+  const [displayingList, setdisplayingList] = useState(true);
 
   // below useEffect init data.  checks local storage and use the data
   useEffect(() => {
@@ -70,7 +71,7 @@ function App() {
       <Header isDisplayStudy={isDisplayStudy} changeWordList={changeWordList} />
       <Search addWordObj={addWordObj} />
       <DisplayWords
-        wordObjList={wordObjList}
+        wordObjList={isDisplayStudy ? wordObjList : memorizedWordObjList}
         deleteWordObj={deleteWordObj}
         saveToMemorizedList={saveToMemorizedList}
       />
