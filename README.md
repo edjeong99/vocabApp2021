@@ -25,3 +25,9 @@ Also can be deployed at AWS using amplify service
 ### Getting Started with Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 Created using react app with pwa template → npx create-react-app [appName] --template cra-template-pw
+
+
+
+## To run this program, execute below command
+npm install
+npm start
